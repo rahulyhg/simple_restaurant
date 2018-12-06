@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Request;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request as HttpRequest;
 
-class RequestController extends Controller
+class RequestsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,7 +33,7 @@ class RequestController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HttpRequest $request)
     {
         //
     }
@@ -67,7 +67,7 @@ class RequestController extends Controller
      * @param  \App\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Request $request)
+    public function update(HttpRequest $httpRequest, Request $request)
     {
         //
     }
