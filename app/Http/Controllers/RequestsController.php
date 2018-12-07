@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use App\Request;
 use Illuminate\Http\Request as HttpRequest;
 
@@ -14,7 +15,7 @@ class RequestsController extends Controller
      */
     public function index()
     {
-        //
+        return Request::all();
     }
 
     /**
@@ -35,7 +36,10 @@ class RequestsController extends Controller
      */
     public function store(HttpRequest $request)
     {
-        //
+        $requestItens = Product::find($request->product_id);
+        $requestSave = Request::create($request->all());
+        $requestSave->products()->attach($requestItens);
+        return $requestSave;
     }
 
     /**
@@ -46,7 +50,7 @@ class RequestsController extends Controller
      */
     public function show(Request $request)
     {
-        //
+        return $request;
     }
 
     /**
@@ -69,7 +73,10 @@ class RequestsController extends Controller
      */
     public function update(HttpRequest $httpRequest, Request $request)
     {
-        //
+        $request->update($httpRequest->all());
+        $product = Product::find($request->product_id);
+        $request->products()->attach($product);
+        return $request;
     }
 
     /**
@@ -80,6 +87,6 @@ class RequestsController extends Controller
      */
     public function destroy(Request $request)
     {
-        //
+        $request->delete();
     }
 }

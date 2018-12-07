@@ -13,7 +13,7 @@ class CreateRequestProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('request_product', function (Blueprint $table) {
+        Schema::create('product_request', function (Blueprint $table) {
             $table->unsignedInteger('request_id');
             $table->foreign('request_id')->references('id')->on('requests');
             $table->unsignedInteger('product_id');

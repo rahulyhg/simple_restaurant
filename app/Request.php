@@ -10,6 +10,8 @@ class Request extends Model
         'client_id', 'table', 'total_price',
     ];
 
+    protected $with = ['products', 'client'];
+
     public function client()
     {
         return $this->belongsTo(Client::class);
